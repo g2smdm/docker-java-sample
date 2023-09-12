@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: msa
-        image: gsmdm/sample-spring-docker:latest
+        image: gsmdm/dockerspringboot:latest
         resources:
             limits:
               cpu: 500m
