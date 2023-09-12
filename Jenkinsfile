@@ -40,11 +40,11 @@ pipeline {
             }
         }
         
-        stage('docker login') {
-            steps {
-                	bat 'docker login -u gsmdm -p Pana@2023'
-            }
-        }
+        // stage('docker login') {
+        //     steps {
+        //         	bat 'docker login -u gsmdm -p 1234'
+        //     }
+        // }
         
 //         stage('docker push') {
 //             steps {
