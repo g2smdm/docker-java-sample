@@ -36,19 +36,19 @@ pipeline {
         
         stage('docker package') {
             steps {
-                bat 'docker build -t dockerjava .'
+                bat 'docker build -t gsmdm/dockerjava .'
             }
         }
         
-//         stage('docker login') {
-//             steps {
-//                 	bat 'docker login -u gopiteekenam -p 48cc7b0c-36c1-4ee8-b762-053f950813b0'
-//             }
-//         }
+        stage('docker login') {
+            steps {
+                	bat 'docker login -u gsmdm -p Pana@2023'
+            }
+        }
         
 //         stage('docker push') {
 //             steps {
-//                 bat 'docker push dockerjava:latest'
+//                 bat 'docker push gsmdm/dockerjava:latest'
 //             }
 //         }
         
