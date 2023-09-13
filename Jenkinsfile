@@ -60,7 +60,8 @@ pipeline {
 
 	    stage("install minikube") {
 		steps {
-		   bat 'kubectl config get-contexts'
+		 bat 'minikube start'  
+		 bat 'kubectl config get-contexts'
 		}
 	    }
 		
