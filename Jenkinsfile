@@ -57,6 +57,12 @@ pipeline {
         //         bat 'docker run -p 9090:8080 dockerjava'
         //     }
         // }
+
+	    stage("install minikube") {
+		steps {
+		   bat 'minikube start'
+		}
+	    }
 		
 		stage('deploy to k8s') {
             steps {
