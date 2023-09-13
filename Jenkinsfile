@@ -1,6 +1,9 @@
 pipeline {
     agent any
-	
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "Maven"
+    } 
     stages {
         
         stage('Clone') {
@@ -33,19 +36,19 @@ pipeline {
         
         stage('docker package') {
             steps {
-                bat 'docker build -t dockerjava .'
+                bat 'docker build -t gsmdm/dockerjava .'
             }
         }
         
-//         stage('docker login') {
-//             steps {
-//                 	bat 'docker login -u gopiteekenam -p 48cc7b0c-36c1-4ee8-b762-053f950813b0'
-//             }
-//         }
+        // stage('docker login') {
+        //     steps {
+        //         	bat 'docker login -u gsmdm -p 1234'
+        //     }
+        // }
         
 //         stage('docker push') {
 //             steps {
-//                 bat 'docker push dockerjava:latest'
+//                 bat 'docker push gsmdm/dockerjava:latest'
 //             }
 //         }
         
@@ -54,10 +57,16 @@ pipeline {
         //         bat 'docker run -p 9090:8080 dockerjava'
         //     }
         // }
+
+	    stage("install minikube") {
+		steps {
+		 bat 'kubectl config get-contexts'
+		}
+	    }
 		
 		stage('deploy to k8s') {
             steps {
-                bat 'kubectl apply -f deployment-service.yml'
+                bat 'kubectl apply -f deployment-service.yaml'
             }
         }
 		
